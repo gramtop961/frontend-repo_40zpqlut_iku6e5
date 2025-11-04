@@ -1,28 +1,49 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import { Home, User, FolderGit2, MessageSquare } from 'lucide-react';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen w-full bg-black text-white selection:bg-cyan-500/30 selection:text-white">
+      {/* Floating nav */}
+      <nav className="fixed left-1/2 top-6 z-50 -translate-x-1/2">
+        <ul className="flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-2 backdrop-blur">
+          <li>
+            <a href="#home" className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-cyan-100/90 hover:text-white hover:bg-white/5">
+              <Home size={16} /> Home
+            </a>
+          </li>
+          <li>
+            <a href="#about" className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-cyan-100/90 hover:text-white hover:bg-white/5">
+              <User size={16} /> About
+            </a>
+          </li>
+          <li>
+            <a href="#projects" className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-cyan-100/90 hover:text-white hover:bg-white/5">
+              <FolderGit2 size={16} /> Projects
+            </a>
+          </li>
+          <li>
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-cyan-100/90 hover:text-white hover:bg-white/5">
+              <MessageSquare size={16} /> Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-export default App
+      <main className="[scrollbar-color:rgba(34,211,238,0.4)_transparent]">
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+      </main>
+
+      <footer className="border-t border-white/5 bg-black/40 py-8 text-center text-sm text-cyan-100/60">
+        Built with love for the cosmos. © {new Date().getFullYear()}
+      </footer>
+    </div>
+  );
+}
